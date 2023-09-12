@@ -13,6 +13,14 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/09/2023
 
+# Change Log
+# Change :2
+# Changes Made: Adding Loop to check the footage entered
+# Date of Change: 09/12/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 09/17/2023
+
 try:
     print("****Welcome to the Calculator****")
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
