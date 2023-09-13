@@ -13,21 +13,20 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/09/2023
 
-# Change Log
-# Change :2
-# Changes Made: Adding Loop to check the footage entered
-# Date of Change: 09/12/2023
-# Author: Ruben Brionez Jr
-# Change Approved by: Ruben Brionez Jr
-# Date Moved to Production: 09/17/2023
-
 try:
     print("****Welcome to the Calculator****")
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
     feet_install = (float(input("Please enter the footage for the cable.\n")))  # This line requests an input footage
     # and converts to a float
-    cost = round((feet_install * 0.87), 2)  # This line multiplies the footage by 0.87 and
-    # then rounds to two decimal places
+    if feet_install > 500:
+        cost = feet_install * 0.50
+    elif feet_install > 250:
+        cost = feet_install * 0.70
+    elif feet_install > 100:
+        cost = feet_install * 0.80
+    else:
+        cost = feet_install * 0.87
+    round(cost, 2)  # This should round the final cost to two decimal places
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
           f"The price per foot is $0.87\nThe total cost is ${cost}")
