@@ -24,24 +24,21 @@
 try:
     print("****Welcome to the Calculator****")
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
-    feet_install = (float(input("Please enter the footage for the cable.\n")))  # This line requests an input footage
-    # and converts to a float
-    if feet_install > 500:
+    feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))  # This
+    # line requests an input footage and converts to an int
+    if feet_install > 500:  # This starts the IF loop for bulk pricing discounts
         price = 0.50
-        cost = feet_install * price
     elif feet_install > 250:
         price = 0.70
-        cost = feet_install * price
     elif feet_install > 100:
         price = 0.80
-        cost = feet_install * price
     else:
         price = 0.87
-        cost = feet_install * price
-    round(cost, 2)  # This should round the final cost to two decimal places
+    cost = (round((feet_install * price), 2))
+
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
-          f"The price per foot is ${price}\nThe total cost is ${cost}")
+          f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")
     print("**************************************************")  # Line seperator
     print("Thank you!")
 except Exception:
