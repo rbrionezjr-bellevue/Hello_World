@@ -1,9 +1,9 @@
 # DSC 510
 # Week 2
-# Programming Assignment Week 2
+# Programming Assignment Week 3
 # Author: Ruben Brionez Jr
-# 09/09/2023
-# Labor cost calculator for fiber install
+# 09/17/2023
+# Labor cost calculator for fiber install with bulk discount
 
 # Change Log
 # Change :1
@@ -17,6 +17,14 @@
 # Change :2
 # Changes Made: Implemented an if loop to account for bulk discount pricing
 # Date of Change: 09/13/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 09/17/2023
+
+# Change Log
+# Change :3
+# Changes Made: Added bulk discount statement
+# Date of Change: 09/14/2023
 # Author: Ruben Brionez Jr
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/17/2023
@@ -39,6 +47,10 @@ try:
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
           f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")
+    if price != 0.87:
+        print("You received a bulk discount!")
+    else:
+        pass
     print("**************************************************")  # Line seperator
     print("Thank you!")
 except Exception:
