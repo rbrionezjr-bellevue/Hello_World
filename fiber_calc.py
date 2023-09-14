@@ -34,7 +34,7 @@ try:
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
     feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))  # This
     # line requests an input footage and converts to an int
-    if feet_install > 500:  # This starts the IF loop for bulk pricing discounts
+    if feet_install > 500:  # This starts the IF conditional statement for bulk pricing discounts
         price = 0.50
     elif feet_install > 250:
         price = 0.70
@@ -42,15 +42,17 @@ try:
         price = 0.80
     else:
         price = 0.87
-    cost = (round((feet_install * price), 2))
+    cost = (round((feet_install * price), 2))  # This is intended to round the cost to 2 decimal places
 
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
-          f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")
-    if price != 0.87:
+          f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string that prints
+    # the customer a receipt with needed information, price and cost formatted to 2 decimal places
+    if price != 0.87:  # This conditional statement add a printed message
+        # to let the customer know they received a discount
         print("You received a bulk discount!")
     else:
-        pass
+        pass  # This allows the program to pass the else statement without an error
     print("**************************************************")  # Line seperator
     print("Thank you!")
 except Exception:
