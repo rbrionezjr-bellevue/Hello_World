@@ -15,7 +15,7 @@
 
 # Change Log
 # Change :2
-# Changes Made: Implemented an if loop to account for bulk discount pricing
+# Changes Made: Implemented an if conditional to account for bulk discount pricing
 # Date of Change: 09/13/2023
 # Author: Ruben Brionez Jr
 # Change Approved by: Ruben Brionez Jr
@@ -32,8 +32,8 @@
 try:
     print("****Welcome to the Calculator****")
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
-    feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))  # This
-    # line requests an input footage and converts to an int
+    feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))
+    # The above line requests an input footage and converts to an int
     if feet_install > 500:  # This starts the IF conditional statement for bulk pricing discounts
         price = 0.50
     elif feet_install > 250:
@@ -56,6 +56,7 @@ try:
     print("**************************************************")  # Line seperator
     print("Thank you!")
 except Exception:
-    print("Please be sure to enter numbers only for the footage.\nPlease run the calculator again!")  # This line should
+    print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
+          "Please run the calculator again!")  # This line should
     # capture any errors at the input level that will allow the user to re-run the program and be sure
     # the correct values are entered
