@@ -29,6 +29,19 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/17/2023
 
+# Change Log
+# Change :4
+# Changes Made: Added a function to calculate the cost
+# Date of Change: 09/19/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 09/24/2023
+
+def cost_calc(a, b):  # This defines a function to multiply
+    total_cost = a * b
+    return total_cost
+
+
 try:
     print("****Welcome to the Calculator****")
     company = input("Please enter the company name:\n")  # This line requests a company name be entered
@@ -42,7 +55,7 @@ try:
         price = 0.80
     else:
         price = 0.87
-    cost = (round((feet_install * price), 2))  # This is intended to round the cost to 2 decimal places
+    cost = cost_calc(feet_install, price)  # This calls the cost function that takes the parameters and multiplies them
 
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
