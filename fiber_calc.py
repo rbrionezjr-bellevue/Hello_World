@@ -39,6 +39,7 @@
 
 def cost_calc(a, b):  # This defines a function to multiply
     total_cost = a * b
+    round(total_cost, 2)
     return total_cost
 
 
