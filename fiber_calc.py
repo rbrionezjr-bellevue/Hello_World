@@ -45,41 +45,40 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/24/2023
 
-def main(feet, price):  # This defines a main function with two parameter and multiplies them
-    total_cost = feet * price
-    round(total_cost, 2)
-    return total_cost
+import cost_calc
 
 
-try:
-    print("****Welcome to the Calculator****")
-    company = input("Please enter the company name:\n")  # This line requests a company name be entered
-    feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))
-    # The above line requests an input footage and converts to an int
-    if feet_install > 500:  # This starts the IF conditional statement for bulk pricing discounts
-        price = 0.50
-    elif feet_install > 250:
-        price = 0.70
-    elif feet_install > 100:
-        price = 0.80
-    else:
-        price = 0.87
-    if __name__ == "__main__":
-        cost = main(feet_install, price)  # This calls the cost function that takes the parameters and multiplies them
+if __name__ == "__main__":
 
-    print("**************************************************")  # Line seperator
-    print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
-          f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string that prints
-    # the customer a receipt with needed information, price and cost formatted to 2 decimal places
-    if price != 0.87:  # This conditional statement add a printed message
-        # to let the customer know they received a discount
-        print("You received a bulk discount!".upper())
-    else:
-        pass  # This allows the program to pass the else statement without an error
-    print("**************************************************")  # Line seperator
-    print("Thank you!".upper())
-except Exception:
-    print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
-          "Please run the calculator again!")  # This line should
-    # capture any errors at the input level that will allow the user to re-run the program and be sure
-    # the correct values are entered
+    try:
+        print("****Welcome to the Calculator****")
+        company = input("Please enter the company name:\n")  # This line requests a company name be entered
+        feet_install = (int(input("Please enter the footage for the cable.\nPlease round to the nearest foot\n")))
+        # The above line requests an input footage and converts to an int
+        if feet_install > 500:  # This starts the IF conditional statement for bulk pricing discounts
+            price = 0.50
+        elif feet_install > 250:
+            price = 0.70
+        elif feet_install > 100:
+            price = 0.80
+        else:
+            price = 0.87
+
+            cost = cost_calc(feet_install, price)
+
+        print("**************************************************")  # Line seperator
+        print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
+              f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string that prints
+        # the customer a receipt with needed information, price and cost formatted to 2 decimal places
+        if price != 0.87:  # This conditional statement add a printed message
+            # to let the customer know they received a discount
+            print("You received a bulk discount!".upper())
+        else:
+            pass  # This allows the program to pass the else statement without an error
+        print("**************************************************")  # Line seperator
+        print("Thank you!".upper())
+    except Exception:
+        print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
+              "Please run the calculator again!")  # This line should
+        # capture any errors at the input level that will allow the user to re-run the program and be sure
+        # the correct values are entered
