@@ -37,8 +37,16 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/24/2023
 
-def cost_calc(a, b):  # This defines a function to multiply
-    total_cost = a * b
+# Change Log
+# Change :5
+# Changes Made: defined a main function that calculates cost and is currently only called when run from main program
+# Date of Change: 09/22/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 09/24/2023
+
+def main(feet, price):  # This defines a main function with two parameter and multiplies them
+    total_cost = feet * price
     round(total_cost, 2)
     return total_cost
 
@@ -56,7 +64,8 @@ try:
         price = 0.80
     else:
         price = 0.87
-    cost = cost_calc(feet_install, price)  # This calls the cost function that takes the parameters and multiplies them
+    if __name__ == "__main__":
+        cost = main(feet_install, price)  # This calls the cost function that takes the parameters and multiplies them
 
     print("**************************************************")  # Line seperator
     print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
@@ -64,11 +73,11 @@ try:
     # the customer a receipt with needed information, price and cost formatted to 2 decimal places
     if price != 0.87:  # This conditional statement add a printed message
         # to let the customer know they received a discount
-        print("You received a bulk discount!")
+        print("You received a bulk discount!".upper())
     else:
         pass  # This allows the program to pass the else statement without an error
     print("**************************************************")  # Line seperator
-    print("Thank you!")
+    print("Thank you!".upper())
 except Exception:
     print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
           "Please run the calculator again!")  # This line should
