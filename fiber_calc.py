@@ -45,7 +45,7 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/24/2023
 def calc(feet, price):  # This defines a function that takes two parameter and multiplies them
-    total_cost = feet * price
+    total_cost = round(feet * price, 2)  # Round the result to two decimal places
     return total_cost  # This line returns the value of multiplied parameter and stores it
 
 
