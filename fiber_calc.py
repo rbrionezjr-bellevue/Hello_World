@@ -64,17 +64,17 @@ def main():
         else:
             price = 0.87
 
-        print("**************************************************")  # Line seperator
+        print("_______________________________________________________")  # Line seperator
         print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
               f"The price per foot is ${price:.2f}\nThe total cost is ${calc(feet_install, price):.2f}")  # This is an F
         # string that prints the customer a receipt with needed information, price and cost formatted
         # to 2 decimal places
         if price != 0.87:  # This conditional statement add a printed message
             # to let the customer know they received a discount
-            print("You received a bulk discount!".upper())
+            print(f"You received a bulk discount of ${0.87 - price:.2f} per foot".upper())  # Prints discount per foot
         else:
             pass  # This allows the program to pass the else statement without an error
-        print("**************************************************")  # Line seperator
+        print("_______________________________________________________")  # Line seperator
         print("Thank you!".upper())  # Thank you message to uppercase
     except Exception:
         print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
