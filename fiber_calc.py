@@ -1,5 +1,5 @@
 # DSC 510
-# Week 2
+# Week 4
 # Programming Assignment Week 3
 # Author: Ruben Brionez Jr
 # 09/17/2023
@@ -44,12 +44,10 @@
 # Author: Ruben Brionez Jr
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/24/2023
-
 import cost_calc
 
 
-if __name__ == "__main__":
-
+def main():
     try:
         print("****Welcome to the Calculator****")
         company = input("Please enter the company name:\n")  # This line requests a company name be entered
@@ -63,22 +61,25 @@ if __name__ == "__main__":
             price = 0.80
         else:
             price = 0.87
-
-            cost = cost_calc(feet_install, price)
+        cost = cost_calc.calc(feet_install, price)
 
         print("**************************************************")  # Line seperator
         print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
-              f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string that prints
-        # the customer a receipt with needed information, price and cost formatted to 2 decimal places
+              f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string
+        # that prints the customer a receipt with needed information, price and cost formatted to 2 decimal places
         if price != 0.87:  # This conditional statement add a printed message
             # to let the customer know they received a discount
             print("You received a bulk discount!".upper())
         else:
             pass  # This allows the program to pass the else statement without an error
         print("**************************************************")  # Line seperator
-        print("Thank you!".upper())
+        print("Thank you!".upper())  # Thank you message to uppercase
     except Exception:
         print("Please be sure to enter numbers only for the footage.\nBe sure to round to the nearest foot.\n"
               "Please run the calculator again!")  # This line should
         # capture any errors at the input level that will allow the user to re-run the program and be sure
         # the correct values are entered
+
+
+if __name__ == "__main__":
+    main()
