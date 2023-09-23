@@ -44,7 +44,9 @@
 # Author: Ruben Brionez Jr
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 09/24/2023
-import cost_calc
+def calc(feet, price):  # This defines a function that takes two parameter and multiplies them
+    total_cost = feet * price
+    return total_cost  # This line returns the value of multiplied parameter and stores it
 
 
 def main():
@@ -61,12 +63,12 @@ def main():
             price = 0.80
         else:
             price = 0.87
-        cost = cost_calc.calc(feet_install, price)
 
         print("**************************************************")  # Line seperator
         print(f"The Company name entered was '{company}'\nThe total footage entered was {feet_install} FT\n"
-              f"The price per foot is ${price:.2f}\nThe total cost is ${cost:.2f}")  # This is an F string
-        # that prints the customer a receipt with needed information, price and cost formatted to 2 decimal places
+              f"The price per foot is ${price:.2f}\nThe total cost is ${calc(feet_install, price):.2f}")  # This is an F
+        # string that prints the customer a receipt with needed information, price and cost formatted
+        # to 2 decimal places
         if price != 0.87:  # This conditional statement add a printed message
             # to let the customer know they received a discount
             print("You received a bulk discount!".upper())
