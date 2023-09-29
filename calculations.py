@@ -13,19 +13,11 @@
 # Date Moved to Production: 10/01/2023
 
 
-def perform_calculation(operation):
+def perform_calculation():
     print("Enter two number")
-    x = int(input("First number: "))
-    y = int(input("Second number: "))
-    if operation == "+":
-        result = x + y
-    elif operation == "-":
-        result = x - y
-    elif operation == "*":
-        result = x * y
-    else:
-        result = x/y
-    return result
+    num1 = int(input("First number: "))
+    num2 = int(input("Second number: "))
+    print(f"Your first number was {num1} and your second number was {num2}")
 
 
 def calculate_average():
@@ -34,6 +26,10 @@ def calculate_average():
 
 def main():
     try:
-        print("Hello World!")
+        perform_calculation()
     except Exception:
         print("End of Main Function")
+
+
+if __name__ == "__main__":
+    main()
