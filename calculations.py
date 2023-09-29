@@ -21,13 +21,16 @@ def perform_calculation():
 
 
 def calculate_average():
-    x = int(input("How many numbers would you like to enter: "))
-    while x > 0:
-        input("Please enter a number: ")
-        x = x - 1
-    #  test = [1, 2, 3, 4]
-    #  for num in test:
-        #  print(num)
+    lst = []
+    n = int(input("Enter How many number to be averaged: "))
+    for i in range(0, n):
+        num = int(input("Please enter a number: "))
+        lst.append(num)
+    print(f"The numbers you entered were {lst}!")
+    total = 0
+    for num in lst:
+        total = total + num
+    print(f"The sum of the numbers entered is {total}")
 
 
 def main():
