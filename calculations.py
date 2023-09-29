@@ -21,12 +21,19 @@ def perform_calculation():
 
 
 def calculate_average():
-    input("How many numbers would you like to enter: ")
+    x = int(input("How many numbers would you like to enter: "))
+    while x > 0:
+        input("Please enter a number: ")
+        x = x - 1
+    #  test = [1, 2, 3, 4]
+    #  for num in test:
+        #  print(num)
 
 
 def main():
     try:
-        perform_calculation()
+        #  perform_calculation()
+        calculate_average()
     except Exception:
         print("End of Main Function")
 
