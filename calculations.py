@@ -31,12 +31,18 @@ def calculate_average():
     for num in lst:
         total = total + num
     print(f"The sum of the numbers entered is {total}")
+    average = total / n
+    print(f"The average of the numbers entered is {average}")
 
 
 def main():
     try:
         #  perform_calculation()
-        calculate_average()
+        answer = input("Would you like to begin? Yes or No\n ")
+        while answer != "No":
+            calculate_average()
+            answer = input("Would you like to continue? Yes or No\n ")
+
     except Exception:
         print("End of Main Function")
 
