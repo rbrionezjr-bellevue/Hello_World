@@ -30,17 +30,18 @@ def perform_calculation():  # This function takes an operation parameter and the
 
 
 def calculate_average():
-    lst = []
+    lst = []  # This is an empty list to store input
     n = int(input("Enter How many numbers to be averaged: "))
-    for i in range(0, n):
+    for i in range(0, n):  # This for loop iterates over the input statement
+        # based on the number entered and fills the list
         num = int(input("Please enter a number: "))
         lst.append(num)
     print(f"The numbers you entered were {lst}!")
     total = 0
-    for num in lst:
+    for num in lst:  # This for loop iterates over the list created by the user and sums the numbers
         total = total + num
     print(f"The sum of the numbers entered is {total}")
-    average = total / n
+    average = round(total / n), 2
     print(f"The average of the numbers entered is {average:.2f}")
 
 
