@@ -73,7 +73,7 @@ def main():  # This is the main function program that used to call the previousl
                 print("Please be sure you've entered a correct value")
                 print("Try again!")
                 break
-            print("--------------------------------------------------")
+            print("--------------------------------------------------")  # Line break for readability
     except Exception:
         print("Please be sure you've entered a correct value")  # This line only prints when the user has not
         # entered a correct value when prompted
