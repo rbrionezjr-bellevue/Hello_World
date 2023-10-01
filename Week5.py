@@ -4,12 +4,20 @@
 # Author Ruben Brionez
 # 09/27/2023
 
+# Change Log
+# Change :1
+# Changes Made: Created Program from previous attempt, included a while loop in main so
+# users can select which function to run
+# Date of Change: 10/01/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 10/01/2023
+
 def perform_calculation(choice):  # This function takes an operation parameter and then requests
     #  two number to perform the operation
     print("Enter two number please")
     num1 = int(input("First number: "))
     num2 = int(input("Second number: "))
-    print(f"Your first number was {num1} and your second number was {num2}")
     if choice == "+":
         val = num1 + num2
     elif choice == "-":
@@ -17,11 +25,10 @@ def perform_calculation(choice):  # This function takes an operation parameter a
     elif choice == "*":
         val = num1 * num2
     elif choice == "/":
-        val = num1 * num2
+        val = num1 / num2
     else:
         print("You have not selected a correct operation\nPlease try again!")
     print(f"The operation selected was {choice} and the value of the two numbers is {val}")
-    return val
 
 
 def calculate_average():  # This function takes as many numbers entered by the user
@@ -41,6 +48,8 @@ def calculate_average():  # This function takes as many numbers entered by the u
     round(average, 2)
     print(f"The average of the numbers entered is {average:.2f}")  # This is formatted to
     # show average at 2 decimal places
+    # I've decided not to return 'val' since it is not used
+    # anywhere else in the program and can be added later if needed
 
 
 def main():  # This is the main function program that used to call the previously defined functions
@@ -52,14 +61,14 @@ def main():  # This is the main function program that used to call the previousl
                 print("Please select from the following operations: +, -, *, /")
                 choice = input("Please select the operation: ")
                 perform_calculation(choice)
-
             elif answer == "NO":
                 answer = input("Would you like to run the average program? Yes or No\n")
                 answer = answer.upper()
                 if answer == "YES":
                     calculate_average()
                 else:
-                    break
+                    print("Thanks for trying the program!")
+                    break  # If answer to both questions is no, the program will exit
             else:
                 print("Please be sure you've entered a correct value")
                 print("Try again!")
@@ -68,7 +77,7 @@ def main():  # This is the main function program that used to call the previousl
     except Exception:
         print("Please be sure you've entered a correct value")  # This line only prints when the user has not
         # entered a correct value when prompted
-    print("You have existed the program, please run again!")
+    print("You have exited the program!")
 
 
 if __name__ == "__main__":
