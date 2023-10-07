@@ -21,7 +21,7 @@
 # Date Moved to Production: 10/01/2023
 
 
-def perform_calculation():  # This function takes an operation parameter and then requests
+def perform_calculation(choice):  # This function takes an operation parameter and then requests
     # two number to perform the operation
 
     print("Enter two number please")
@@ -36,8 +36,8 @@ def perform_calculation():  # This function takes an operation parameter and the
         val = num1 - num2
     elif choice == "*":
         val = num1 * num2
-    elif choice == "/":
-        val = num1 * num2
+    elif choice == "/" and num2 != 0:
+        val = num1 / num2
     else:
         print("You have not selected a correct operation\nPlease try again!")
     print(f"The operation selected was {choice} and the value of the two numbers is {val}")
