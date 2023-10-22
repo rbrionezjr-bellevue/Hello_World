@@ -12,12 +12,29 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 10/22/2023
 
-def add_word():
-    pass
+import string
 
 
-def process_line():
-    pass
+def add_word(file):
+    counts = dict()
+    for line in file:
+        words = line.split()
+        for word in words:
+            if word not in counts:
+                counts[word] = 1
+            else:
+                counts[word] = +1
+    print(counts)
+
+
+def process_line(file):
+    counts = dict()
+    for line in file:
+        line = line.rstrip()
+        line = line.translate(line.maketrans("","", string.punctuation))
+        line = line.lower()
+        words = line.split()
+        print(words)
 
 
 def pretty_print():
@@ -25,9 +42,12 @@ def pretty_print():
 
 
 def main():
-    gba_file = open('gettysburg.txt', 'r')
-    for line in gba_file:
-        pass
+    try:
+        gba_file = open('gettysburg.txt', 'r')
+        for line in gba_file:
+            process_line(gba_file)
+    except Exception:
+        print("What happened...?")
 
 
 if __name__ == "__main__":
