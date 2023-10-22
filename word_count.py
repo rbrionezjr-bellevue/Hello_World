@@ -32,7 +32,6 @@ def process_line(line, counts):  # This processes each line if the text file, th
 
 
 def pretty_print(counts):  # This line is intended to create a more readable output from the dictionary
-    longest = 0
     len_pairs = []  # Created an empty list
     for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
         len_pairs.append((val, key))  # adds the key,value par to the empty list
@@ -55,9 +54,8 @@ def main():
         for line in gba_file:
             process_line(line, counts)
         pretty_print(counts)
-    except:
-        print("File cannot be opened:", gba_file)
-        exit()
+    except FileNotFoundError:
+        print("File cannot be opened\nPlease be sure the file path is correct!")
 
 
 if __name__ == "__main__":
