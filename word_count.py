@@ -23,15 +23,15 @@ def add_word(words, counts):  # loops over the dictionary and adds the amount of
             counts[word] += 1  # This increments words that appear more than once
 
 
-def process_line(line, counts):
+def process_line(line, counts):  # This processes each line if the text file, the for loop is in "main"
     line = line.rstrip()
-    line = line.translate(line.maketrans('', '', string.punctuation))
-    line = line.lower()
-    words = line.split()
-    add_word(words, counts)
+    line = line.translate(line.maketrans('', '', string.punctuation))  # This line removes punctuation
+    line = line.lower()  # This line converts all capital letters to lowercase
+    words = line.split()  # This splits the words in the lines to be counted
+    add_word(words, counts)  # This line calls the function to calculate the times a word appears
 
 
-def pretty_print(counts):
+def pretty_print(counts):  # This line is intended to create a more readable output
     longest = 0
     lst = list()
     for key, val in list(counts.items()):
@@ -42,7 +42,7 @@ def pretty_print(counts):
     print("--------------")
     lst.sort(reverse=True)
     for key, val in lst:
-        print(val, key)
+        print(f"{val}{key :^ }")
 
 
 def main():
@@ -53,8 +53,9 @@ def main():
             process_line(line, counts)
         pretty_print(counts)
 
-    except Exception:
-        print("What happened...?")
+    except:
+        print("File cannot be opened:", gba_file)
+        exit()
 
 
 if __name__ == "__main__":
