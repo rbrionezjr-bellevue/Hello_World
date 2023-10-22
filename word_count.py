@@ -15,37 +15,44 @@
 import string
 
 
-def add_word(file):
-    counts = dict()
-    for line in file:
-        words = line.split()
-        for word in words:
-            if word not in counts:
-                counts[word] = 1
-            else:
-                counts[word] = +1
-    print(counts)
+def add_word(words, counts):  # loops over the dictionary and adds the amount of times a word shows up
+    for word in words:
+        if word not in counts:  # This ensures that a word only showing up once is counted
+            counts[word] = 1
+        else:
+            counts[word] += 1  # This increments words that appear more than once
 
 
-def process_line(file):
-    counts = dict()
-    for line in file:
-        line = line.rstrip()
-        line = line.translate(line.maketrans("","", string.punctuation))
-        line = line.lower()
-        words = line.split()
-        print(words)
+def process_line(line, counts):
+    line = line.rstrip()
+    line = line.translate(line.maketrans('', '', string.punctuation))
+    line = line.lower()
+    words = line.split()
+    add_word(words, counts)
 
 
-def pretty_print():
-    pass
+def pretty_print(counts):
+    longest = 0
+    lst = list()
+    for key, val in list(counts.items()):
+        lst.append((val, key))
+        total = len(lst)
+    print(f"Length of the dictionary is: {total}")
+    print("Word     Count")
+    print("--------------")
+    lst.sort(reverse=True)
+    for key, val in lst:
+        print(val, key)
 
 
 def main():
     try:
         gba_file = open('gettysburg.txt', 'r')
+        counts = dict()
         for line in gba_file:
-            process_line(gba_file)
+            process_line(line, counts)
+        pretty_print(counts)
+
     except Exception:
         print("What happened...?")
 
