@@ -41,11 +41,11 @@ def pretty_print(counts):  # This line is intended to create a more readable out
     print(f"Length of the dictionary is: {total}")
     column1 = "Word"
     column2 = "Count"
-    print(f"{column1}{column2:>15}")
-    print("---------------------")
+    print(f"{column1}{column2:>20}")
+    print("------------------------")
     len_pairs.sort(reverse=True)
     for key, val in len_pairs:
-        print(f"{val}  {key:12}")
+        print(f"{val:<12}{key:>10}")
 
 
 def main():
