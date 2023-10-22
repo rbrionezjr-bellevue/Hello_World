@@ -31,28 +31,30 @@ def process_line(line, counts):  # This processes each line if the text file, th
     add_word(words, counts)  # This line calls the function to calculate the times a word appears
 
 
-def pretty_print(counts):  # This line is intended to create a more readable output
+def pretty_print(counts):  # This line is intended to create a more readable output from the dictionary
     longest = 0
-    lst = list()
-    for key, val in list(counts.items()):
-        lst.append((val, key))
-        total = len(lst)
+    len_pairs = []  # Created an empty list
+    for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
+        len_pairs.append((val, key))  # adds the key,value par to the empty list
+        total = len(len_pairs)  # totals the key/value paris in the list (This would be the total
+        # unique values in the the .txt file
     print(f"Length of the dictionary is: {total}")
-    print("Word     Count")
-    print("--------------")
-    lst.sort(reverse=True)
-    for key, val in lst:
-        print(f"{val}{key :^ }")
+    column1 = "Word"
+    column2 = "Count"
+    print(f"{column1}{column2:>15}")
+    print("---------------------")
+    len_pairs.sort(reverse=True)
+    for key, val in len_pairs:
+        print(f"{val}  {key:12}")
 
 
 def main():
     try:
-        gba_file = open('gettysburg.txt', 'r')
-        counts = dict()
+        gba_file = open('gettysburg.txt', 'r')  # Opens desired file
+        counts = dict()  # creates an Empty dictionary
         for line in gba_file:
             process_line(line, counts)
         pretty_print(counts)
-
     except:
         print("File cannot be opened:", gba_file)
         exit()
