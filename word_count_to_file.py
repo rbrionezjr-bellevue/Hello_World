@@ -31,8 +31,7 @@ def process_line(line, counts):  # This processes each line if the text file, th
     add_word(words, counts)  # This line calls the function to calculate the times a word appears
 
 
-def process_file(counts):  # This line is intended to create a more readable output from the dictionary
-    new_file = input("Please enter a name for the new file to write to: ")
+def process_file(counts, new_file):  # This line is intended to create a more readable output from the dictionary
     len_pairs = []  # Created an empty list
     for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
         len_pairs.append((val, key))  # adds the key,value par to the empty list
@@ -53,11 +52,14 @@ def process_file(counts):  # This line is intended to create a more readable out
 def main():
     try:
         file_name = input("Enter the file name: ")
+        new_file = input("Please enter a name for the new file to write to: ")
         with open(file_name, 'r') as file_hand:  # Opens desired file
-            counts = dict()  # creates an Empty dictionary
-            for line in file_hand:
-                process_line(line, counts)
-        process_file(counts)
+            with open(new_file, 'w') as new_hand:
+                counts = dict()  # creates an Empty dictionary
+                for line in file_hand:
+                    process_line(line, counts)
+            print(len(counts))
+        process_file(counts, new_file)
     except FileNotFoundError:
         print("File cannot be opened\nPlease be sure the file path is correct!")
 
