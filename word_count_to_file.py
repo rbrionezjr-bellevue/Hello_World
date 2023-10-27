@@ -31,7 +31,7 @@ def process_line(line, counts):  # This processes each line if the text file, th
     add_word(words, counts)  # This line calls the function to calculate the times a word appears
 
 
-def proces_file(counts):  # This line is intended to create a more readable output from the dictionary
+def process_file(counts):  # This line is intended to create a more readable output from the dictionary
     len_pairs = []  # Created an empty list
     for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
         len_pairs.append((val, key))  # adds the key,value par to the empty list
@@ -49,11 +49,12 @@ def proces_file(counts):  # This line is intended to create a more readable outp
 
 def main():
     try:
-        gba_file = open('gettysburg.txt', 'r')  # Opens desired file
+        file_name = input("Enter the file name: ")
+        file_hand = open(file_name, 'r')  # Opens desired file
         counts = dict()  # creates an Empty dictionary
-        for line in gba_file:
+        for line in file_hand:
             process_line(line, counts)
-        pretty_print(counts)
+        process_file(counts)
     except FileNotFoundError:
         print("File cannot be opened\nPlease be sure the file path is correct!")
 
