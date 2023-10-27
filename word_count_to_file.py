@@ -32,28 +32,31 @@ def process_line(line, counts):  # This processes each line if the text file, th
 
 
 def process_file(counts):  # This line is intended to create a more readable output from the dictionary
+    new_file = input("Please enter a name for the new file to write to: ")
     len_pairs = []  # Created an empty list
     for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
         len_pairs.append((val, key))  # adds the key,value par to the empty list
         total = len(len_pairs)  # totals the key/value paris in the list (This would be the total
-        # unique values in the the .txt file
-    print(f"Length of the dictionary is: {total}")
-    column1 = "Word"
-    column2 = "Count"
-    print(f"{column1}{column2:>20}")
-    print("------------------------")
-    len_pairs.sort(reverse=True)
-    for key, val in len_pairs:
-        print(f"{val:<12}{key:>10}")
+    with open(new_file, 'w') as new_hand:
+        width = 15
+        filler = " "
+        new_hand.write(f"Length of the dictionary is: {total}\n")
+        column1 = "Word"
+        column2 = "Count"
+        new_hand.write(f"{column1:{filler}<{width}} {column2}\n")
+        new_hand.write("------------------------\n")
+        len_pairs.sort(reverse=True)
+        for key, val in len_pairs:
+            new_hand.write(f"{val:{filler}<{width}} {key:02}\n")
 
 
 def main():
     try:
         file_name = input("Enter the file name: ")
-        file_hand = open(file_name, 'r')  # Opens desired file
-        counts = dict()  # creates an Empty dictionary
-        for line in file_hand:
-            process_line(line, counts)
+        with open(file_name, 'r') as file_hand:  # Opens desired file
+            counts = dict()  # creates an Empty dictionary
+            for line in file_hand:
+                process_line(line, counts)
         process_file(counts)
     except FileNotFoundError:
         print("File cannot be opened\nPlease be sure the file path is correct!")
