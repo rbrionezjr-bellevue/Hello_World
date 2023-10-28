@@ -36,10 +36,10 @@ def process_file(counts, new_file):  # This line is intended to create a more re
     for key, val in list(counts.items()):  # This loop places the key:value pair in a list in order to get a total
         len_pairs.append((val, key))  # adds the key,value par to the empty list
         total = len(len_pairs)  # totals the key/value paris in the list (This would be the total
-    with open(new_file, 'w') as new_hand:
+    with open(new_file, 'a') as new_hand:
         width = 15
         filler = " "
-        new_hand.write(f"Length of the dictionary is: {total}\n")
+        #  new_hand.write(f"Length of the dictionary is: {total}\n")
         column1 = "Word"
         column2 = "Count"
         new_hand.write(f"{column1:{filler}<{width}} {column2}\n")
@@ -51,14 +51,15 @@ def process_file(counts, new_file):  # This line is intended to create a more re
 
 def main():
     try:
-        file_name = input("Enter the file name: ")
-        new_file = input("Please enter a name for the new file to write to: ")
+        file_name = input("Enter the file name with file extension '.txt': ")
+        new_file = input("Please enter a name for the new file to write to with file extension '.txt': ")
         with open(file_name, 'r') as file_hand:  # Opens desired file
             with open(new_file, 'w') as new_hand:
                 counts = dict()  # creates an Empty dictionary
                 for line in file_hand:
                     process_line(line, counts)
-            print(len(counts))
+                new_hand.write(f"The length of the dictionary is {len(counts)}\n")
+        print("***Your file has been created!***".upper())
         process_file(counts, new_file)
     except FileNotFoundError:
         print("File cannot be opened\nPlease be sure the file path is correct!")
