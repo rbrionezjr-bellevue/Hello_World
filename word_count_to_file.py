@@ -13,6 +13,7 @@
 # Date Moved to Production: 10/29/2023
 
 import string
+import os
 
 
 def add_word(words, counts):  # loops over the dictionary and adds the amount of times a word shows up
@@ -42,25 +43,30 @@ def process_file(counts, new_file):  # This line is intended to create a more re
         #  new_hand.write(f"Length of the dictionary is: {total}\n")
         column1 = "Word"
         column2 = "Count"
-        new_hand.write(f"{column1:{filler}<{width}} {column2}\n")
-        new_hand.write("------------------------\n")
-        len_pairs.sort(reverse=True)
+        new_hand.write(f"{column1:{filler}<{width}} {column2}\n")  # This is designed to create two columns
+        new_hand.write("------------------------\n")  # Line break
+        len_pairs.sort(reverse=True)  # Reverse the order
         for key, val in len_pairs:
-            new_hand.write(f"{val:{filler}<{width}} {key:02}\n")
+            new_hand.write(f"{val:{filler}<{width}} {key:02}\n")  # Write the key value pairs to a file, this also pads
+            # single digit numbers with a zero for future use
 
 
 def main():
     try:
         file_name = input("Enter the file name with file extension '.txt': ")
-        new_file = input("Please enter a name for the new file to write to with file extension '.txt': ")
-        with open(file_name, 'r') as file_hand:  # Opens desired file
-            with open(new_file, 'w') as new_hand:
-                counts = dict()  # creates an Empty dictionary
-                for line in file_hand:
-                    process_line(line, counts)
-                new_hand.write(f"The length of the dictionary is {len(counts)}\n")
-        print("***Your file has been created!***".upper())
-        process_file(counts, new_file)
+        if os.path.isfile(file_name):  # Check to verify the file is available
+            new_file = input("Please enter a name for the new file to write to with file extension '.txt': ")  # Creates
+            # a new file with the name inputted by the user
+            with open(file_name, 'r') as file_hand:  # Opens desired file
+                with open(new_file, 'w') as new_hand:
+                    counts = dict()  # creates an Empty dictionary
+                    for line in file_hand:
+                        process_line(line, counts)
+                    new_hand.write(f"The length of the dictionary is {len(counts)}\n")
+            print("***Your file has been created!***".upper())
+            process_file(counts, new_file)
+        else:
+            print("File not found! Try Again!")  # This will catch a non-existent file
     except FileNotFoundError:
         print("File cannot be opened\nPlease be sure the file path is correct!")
 
