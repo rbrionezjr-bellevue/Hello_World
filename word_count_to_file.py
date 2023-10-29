@@ -12,6 +12,14 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 10/29/2023
 
+# Change Log
+# Change :2
+# Changes Made: Updated main with an "if" statement to verify the file exists prior to running
+# Date of Change: 10/24/2023
+# Author: Ruben Brionez Jr
+# Change Approved by: Ruben Brionez Jr
+# Date Moved to Production: 10/29/2023
+
 import string
 import os
 
@@ -62,7 +70,8 @@ def main():
                     counts = dict()  # creates an Empty dictionary
                     for line in file_hand:
                         process_line(line, counts)
-                    new_hand.write(f"The length of the dictionary is {len(counts)}\n")
+                    new_hand.write(f"The length of the dictionary is {len(counts)}\n")  # Prints the dictionary
+                    # count to a file
             print("***Your file has been created!***".upper())
             process_file(counts, new_file)
         else:
