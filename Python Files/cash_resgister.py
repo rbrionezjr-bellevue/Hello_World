@@ -14,26 +14,32 @@
 
 class CashRegister:
     #  Define a class variable somewhere for a available fruits and their prices?
+    items_in_cart = 0
 
     def __int__(self, price):
         self.price = price
 
     def add_item(self, price):
         cart = []
+        CashRegister.items_in_cart += 1  # This should increment each time an item is added with a price
 
-        
+
 welcome_message = "Welcome to the Fruit Cart!"
 
 
 def main():
     price = 0
+    cart = []
     print(welcome_message.upper())
     answer = input("Would you like to add items to your cart? Yes or No: ")
     answer = answer.lower()
     if answer == "yes":
-        item = input("Please enter a fruit: ")
-        while item != "stop":
-            CashRegister().add_item(price)
+        while True:
+            item = input("Please enter a fruit: ")
+            cart.append(item)
+            if item == "stop":
+                break
+            print(cart)
     else:
         print("Thanks for stopping by!")
     pass
