@@ -12,34 +12,40 @@
 # Change Approved by: Ruben Brionez Jr
 # Date Moved to Production: 11/12/2023
 
+class Fruit:
+    def __int__(self, name, price):
+        self.name = name
+        self.price = price
+
+
 class CashRegister:
-    #  Define a class variable somewhere for a available fruits and their prices?
+    cart = []  # Rework this class!!!
     items_in_cart = 0
 
-    def __int__(self, price):
+    def __int__(self, price, cart):
         self.price = price
 
     def add_item(self, price):
-        cart = []
-        CashRegister.items_in_cart += 1  # This should increment each time an item is added with a price
+        print(len(CashRegister.cart))
 
 
 welcome_message = "Welcome to the Fruit Cart!"
 
 
 def main():
-    price = 0
-    cart = []
     print(welcome_message.upper())
     answer = input("Would you like to add items to your cart? Yes or No: ")
     answer = answer.lower()
     if answer == "yes":
         while True:
             item = input("Please enter a fruit: ")
-            cart.append(item)
+            #  price = input("Please enter a price for the item: ") Rework
+            #  price = int(price)  Rework
+            CashRegister.cart.append(item)
+            #  CashRegister.add_item(price)  Rework
             if item == "stop":
                 break
-            print(cart)
+            print(CashRegister.cart)
     else:
         print("Thanks for stopping by!")
     pass
