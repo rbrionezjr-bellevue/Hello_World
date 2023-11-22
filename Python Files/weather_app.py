@@ -73,7 +73,7 @@ def show_celsius(lat, lon):  # This function shows the user all temperatures in 
     print("-----------------------------------------------------------------------------------------")
     print(f"The current temperature is {value_tuple[1]}{degree_sign}\nThe 'feel like' temperature is {value_tuple[3]}"
           f"{degree_sign}\nThe low temperature is {value_tuple[5]}{degree_sign}\nThe high temperature is "
-          f"{value_tuple[7]}{degree_sign}\nThe pressure is {value_tuple[8]}\nThe humidity is {value_tuple[9]}%\nThe "
+          f"{value_tuple[7]}{degree_sign}\nThe pressure is {value_tuple[8]}mb\nThe humidity is {value_tuple[9]}%\nThe "
           f"weather description is: {value_tuple[10]}")
     print("-----------------------------------------------------------------------------------------")
 
@@ -117,8 +117,8 @@ def main():  # This is the main function of the program
             else:
                 print("Please be sure to enter 'city' or 'zip'")
         except ValueError:
-            print("Make sure you entered correct values for 'zip'")  # This will catch invalid input at the zip code
-            # where an integer value is required
+            print("Make sure you entered correct values for 'zip' this should be 5 digits.")  # This will catch invalid
+            # input at the zip code where an integer value is required
         except HTTPError as err:
             print("The site may be down or has moved, please verify with a browser")  # This HTTP exception is meant to
             # catch error generated from a down site or unreachable site.
@@ -126,8 +126,8 @@ def main():  # This is the main function of the program
             print("Please be sure a valid city and state were entered. Try Again.")  # This exception is meant to catch
             # any invalid input that would generate an error when passed to the API
         except KeyError:
-            print("Make sure you entered correct values for 'zip'")  # This exception should also catch invalid input
-            # that would generate an error from the API
+            print("Make sure you entered correct values for 'zip' this should be 5 digits.")  # This exception should
+            # also catch invalid input that would generate an error from the API
 
 
 if __name__ == "__main__":
