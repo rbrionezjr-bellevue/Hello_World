@@ -1,0 +1,75 @@
+# Assignment: ASSIGNMENT 02
+# Name: Brionez Jr, Ruben
+# Date: 12-17-2023
+library(ggplot2)
+library(qqplotr)
+library(descstat)
+library(moments)
+library(pastecs)
+
+# Read the CSV data Set
+df = read.csv(file = "~/GitHub/Hello_World/R Programming/acs-14-1yr-s0201.csv", sep= ",")
+# List the name of each field and 
+# what you believe the data type and intent is of the data included in each field
+colnames(df)
+# ID - character - Unique Identifier
+# ID2 - integer - Secondary unique identifier
+# Geography - character - Identifies location of respondent 
+# PopGroupID - integer - Provides a grouping number for population
+# POPGROUP.display.label - character - Provides a label
+# RacesReported - integer - number of population that reported race
+# HSDegree - numeric - percentage of population with High School degree
+# BachDegree - numeric - percentage of population with Bachelors Degree
+str(df)
+nrow(df)
+ncol(df)
+myHistogram <- ggplot(df,aes(x=HSDegree)) + 
+  geom_histogram(fill = "blue", color = 1, bins = 20) +
+  ggtitle("High School Degrees") + xlab("Percentage") + ylab("Count")  
+myHistogram
+# Answer the following questions based on the Histogram produced:
+# 1: Based on what you see in this histogram, is the data distribution uni modal?
+# 1a: The data distribution is uni modal as it only has a single peak
+# 2: Is it approximately symmetrical?
+# 2a: The histogram is not approximately symmetrical.
+# 3: Is it approximately bell-shaped?
+# 3a: The histogram is not approximately bell-shaped.
+# 4: Is it approximately normal?
+# 4a: The histogram is not approximately normal.
+# 5: If not normal, is the distribution skewed? If so, in which direction?
+# 5a: The distribution is skewed, it is left-skewed.
+# 6: Include a normal curve to the Histogram that you plotted.
+# 6a:I unfortunately spent many hours trying to get the correct answer for this but was unable to 
+# do so, below is the closest I came, I know this is not correct.
+myHistogramDen <- myHistogram + geom_histogram(aes(y=after_stat(density))) +
+  geom_density(col = "red")
+myHistogramDen
+# 7: Explain whether a normal distribution can accurately be used as a model for this data.
+# 7a: A normal distribution could not accurately be used for this data. The distribution    curve is skewed
+# Create a probability plot of the HSDegree Variable
+myDensity <- ggplot(df,aes(x=HSDegree)) + 
+  geom_density(aes(x=HSDegree), fill="steelblue") +
+  ggtitle("High School Degrees") + xlab("Percentage") + ylab("Density")
+myDensity
+# Answer the following questions based on the Probability Plot:
+# 1: Based on what you see in this probability plot, is the distribution approximately normal? Explain how you know.
+# 1a: The distribution is not approximately normal. Distribution is too negatively skewed.
+# 2: If not normal, is the distribution skewed? If so, in which direction? Explain how you know.
+# 2a: The distribution is negatively skewed, the tail pointing left indicates a negatively Skewed distribution.
+# Now that you have looked at this data visually for normality, you will now 
+# quantify normality with numbers using the stat.desc() function. Include a screen capture of the results produced.
+format(stat.desc(df["HSDegree"]), scientific = FALSE)
+skewness(df["HSDegree"])
+kurtosis(df["HSDegree"])
+# In several sentences provide an explanation of the result produced for skew, kurtosis, and z-scores. 
+# In addition, explain how a change in the sample size may change your explanation?
+# 8a: Using the skewness function provided by the moments package in R, we can see that a 
+# when the data of HSDegree is used with the skewness function a negative value is returned. Specifically 
+# -1.69341. This matches the negative skewness of the Histogram. Using the Kurtosis function we can see
+# that a value greater than 3 is returned, this reflects the steep peakness of the curve.
+# Z-scores are calculated by taking a specific data value then subtracting the mean of all data values
+# and then finally dividing by the standard deviation. 
+z <- (89.1 - 87.63) / 5.12
+z
+# With the z-score being close to zero in this example, the value is close to the mean of the data set. 
+# With a larger sample size the distribution curve should normalize.
